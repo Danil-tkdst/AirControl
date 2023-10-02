@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Views</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css?v=1d6d279e" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <section id="module-mainapp.views">
+<span id="views"></span><h1>Views</h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.AircraftsShow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">AircraftsShow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Представление для отображения списка воздушных судов в выбранном ангаре.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attribute template_name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Имя шаблона для отображения списка воздушных судов.</p>
+</dd>
+<dt class="field-even">Attribute context_object_name<span class="colon">:</span></dt>
+<dd class="field-even"><p>Имя переменной контекста, в которой будет храниться список воздушных судов.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.AircraftsShow.context_object_name">
+<span class="sig-name descname"><span class="pre">context_object_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'aircrafts'</span></em></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.views.AircraftsShow.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Возвращает список воздушных судов в выбранном ангаре с подсчетом числа узлов и агрегатов у каждого воздушного судна.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QuerySet воздушных судов с подсчитанным числом узлов и агрегатов.</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>QuerySet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.AircraftsShow.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Aircrafts.html'</span></em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.GaragesShow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">GaragesShow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Представление для отображения списка ангаров с количеством воздушных судов в каждом ангаре.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attribute queryset<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос для получения списка ангаров с подсчетом числа воздушных судов в каждом ангаре.</p>
+</dd>
+<dt class="field-even">Attribute template_name<span class="colon">:</span></dt>
+<dd class="field-even"><p>Имя шаблона для отображения списка ангаров.</p>
+</dd>
+<dt class="field-odd">Attribute context_object_name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Имя переменной контекста, в которой будет храниться список ангаров.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.GaragesShow.context_object_name">
+<span class="sig-name descname"><span class="pre">context_object_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'garages'</span></em></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.GaragesShow.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">QuerySet</span></em></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.GaragesShow.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Garages.html'</span></em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.UnitsShow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">UnitsShow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Представление для отображения списка узлов и агрегатов в выбранном воздушном судне.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attribute model<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель узлов и агрегатов.</p>
+</dd>
+<dt class="field-even">Attribute template_name<span class="colon">:</span></dt>
+<dd class="field-even"><p>Имя шаблона для отображения списка узлов и агрегатов.</p>
+</dd>
+<dt class="field-odd">Attribute context_object_name<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Имя переменной контекста, в которой будет храниться список узлов и агрегатов.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.UnitsShow.context_object_name">
+<span class="sig-name descname"><span class="pre">context_object_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'units'</span></em></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.views.UnitsShow.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Возвращает список узлов и агрегатов в выбранном воздушном судне.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QuerySet узлов и агрегатов в выбранном воздушном судне.</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>QuerySet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.UnitsShow.model">
+<span class="sig-name descname"><span class="pre">model</span></span></dt>
+<dd><p>alias of <a class="reference internal" href="1-models.xhtml#mainapp.models.Unit" title="mainapp.models.Unit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Unit</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.UnitsShow.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Units.html'</span></em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mainapp.views.edit">
+<span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">un_id</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Представление для редактирования информации об узле или агрегате воздушного судна.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<em>HttpRequest</em>) – Запрос пользователя.</p></li>
+<li><p><strong>un_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(в Python v3.11)"><em>int</em></a><span class="link-target"> [https://docs.python.org/3/library/functions.html#int]</span>) – Идентификатор узла или агрегата.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Ответ с формой для редактирования информации или переадресация на предыдущую страницу после сохранения.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HttpResponse</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

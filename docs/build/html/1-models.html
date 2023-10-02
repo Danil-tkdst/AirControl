@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Models &#8212; документация AirControl 1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=47a0e12c"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=29b1f277"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="models">
+<h1>Models<a class="headerlink" href="#models" title="Link to this heading">¶</a></h1>
+<dl class="py class" id="module-mainapp.models">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mainapp.models.</span></span><span class="sig-name descname"><span class="pre">Aircraft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Aircraft" title="Link to this definition">¶</a></dt>
+<dd><p>Модель воздушного судна в ангаре.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(в Python v3.11)"><em>str</em></a>) – Тип ВС</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(в Python v3.11)"><em>str</em></a>) – Бортовой номер</p></li>
+<li><p><strong>garage</strong> (<a class="reference internal" href="#mainapp.models.Garage" title="mainapp.models.Garage"><em>Garage</em></a>) – Ангар</p></li>
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(в Django v4.2)"><em>BigAutoField</em></a>) – Primary key: ID</p></li>
+</ul>
+</dd>
+</dl>
+<p>Reverse relationships:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>unt</strong> (Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> from <a class="reference internal" href="#mainapp.models.Unit" title="mainapp.models.Unit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Unit</span></code></a>) – All unt of this aircraft (related name of <a class="reference internal" href="#mainapp.models.Unit.aircraft" title="mainapp.models.Unit.aircraft"><code class="xref py py-attr docutils literal notranslate"><span class="pre">aircraft</span></code></a>)</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#mainapp.models.Aircraft.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#mainapp.models.Aircraft.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.bool_control">
+<span class="sig-name descname"><span class="pre">bool_control</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Aircraft.bool_control" title="Link to this definition">¶</a></dt>
+<dd><p>Проверяет, нуждается ли воздушное судно в обслуживании (наличие узлов и агрегатов, требующих обслуживания).
+:return: True, если требуется обслуживание, иначе False
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.bool_fix">
+<span class="sig-name descname"><span class="pre">bool_fix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Aircraft.bool_fix" title="Link to this definition">¶</a></dt>
+<dd><p>Проверяет, нуждается ли воздушное судно в ремонте (наличие узлов и агрегатов, требующих ремонта).
+:return: True, если требуется ремонт, иначе False
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.garage">
+<span class="sig-name descname"><span class="pre">garage</span></span><a class="headerlink" href="#mainapp.models.Aircraft.garage" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> to <a class="reference internal" href="#mainapp.models.Garage" title="mainapp.models.Garage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Garage</span></code></a></p>
+<p>Ангар (related name: <a class="reference internal" href="#mainapp.models.Garage.arcr" title="mainapp.models.Garage.arcr"><code class="xref py py-attr docutils literal notranslate"><span class="pre">arcr</span></code></a>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.garage_id">
+<span class="sig-name descname"><span class="pre">garage_id</span></span><a class="headerlink" href="#mainapp.models.Aircraft.garage_id" title="Link to this definition">¶</a></dt>
+<dd><p>Internal field, use <a class="reference internal" href="#mainapp.models.Aircraft.garage" title="mainapp.models.Aircraft.garage"><code class="xref py py-class docutils literal notranslate"><span class="pre">garage</span></code></a> instead.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.get_absolute_url">
+<span class="sig-name descname"><span class="pre">get_absolute_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Aircraft.get_absolute_url" title="Link to this definition">¶</a></dt>
+<dd><p>Возвращает абсолютный URL для данного воздушного судна.
+:return: Абсолютный URL воздушного судна
+:rtype: str</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#mainapp.models.Aircraft.id" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BigAutoField</span></code></a></p>
+<p>Primary key: ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#mainapp.models.Aircraft.name" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p>
+<p>Бортовой номер</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#mainapp.models.Aircraft.objects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#mainapp.models.Aircraft.type" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p>
+<p>Тип ВС</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Aircraft.unt">
+<span class="sig-name descname"><span class="pre">unt</span></span><a class="headerlink" href="#mainapp.models.Aircraft.unt" title="Link to this definition">¶</a></dt>
+<dd><p>Type: Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> from <a class="reference internal" href="#mainapp.models.Unit" title="mainapp.models.Unit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Unit</span></code></a></p>
+<p>All unt of this aircraft (related name of <a class="reference internal" href="#mainapp.models.Unit.aircraft" title="mainapp.models.Unit.aircraft"><code class="xref py py-attr docutils literal notranslate"><span class="pre">aircraft</span></code></a>)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.models.Garage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mainapp.models.</span></span><span class="sig-name descname"><span class="pre">Garage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Garage" title="Link to this definition">¶</a></dt>
+<dd><p>Модель ангара авиакомпании.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(в Python v3.11)"><em>str</em></a>) – Название ангара</p></li>
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(в Django v4.2)"><em>BigAutoField</em></a>) – Primary key: ID</p></li>
+</ul>
+</dd>
+</dl>
+<p>Reverse relationships:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arcr</strong> (Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> from <a class="reference internal" href="#mainapp.models.Aircraft" title="mainapp.models.Aircraft"><code class="xref py py-class docutils literal notranslate"><span class="pre">Aircraft</span></code></a>) – All arcr of this garage (related name of <a class="reference internal" href="#mainapp.models.Aircraft.garage" title="mainapp.models.Aircraft.garage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">garage</span></code></a>)</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Garage.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#mainapp.models.Garage.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Garage.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#mainapp.models.Garage.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Garage.arcr">
+<span class="sig-name descname"><span class="pre">arcr</span></span><a class="headerlink" href="#mainapp.models.Garage.arcr" title="Link to this definition">¶</a></dt>
+<dd><p>Type: Reverse <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> from <a class="reference internal" href="#mainapp.models.Aircraft" title="mainapp.models.Aircraft"><code class="xref py py-class docutils literal notranslate"><span class="pre">Aircraft</span></code></a></p>
+<p>All arcr of this garage (related name of <a class="reference internal" href="#mainapp.models.Aircraft.garage" title="mainapp.models.Aircraft.garage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">garage</span></code></a>)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Garage.bool_control">
+<span class="sig-name descname"><span class="pre">bool_control</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Garage.bool_control" title="Link to this definition">¶</a></dt>
+<dd><p>Проверяет, нуждается ли ангар в обслуживании (наличие ВС в ангаре, требующих обслуживания).
+:return: True, если требуется обслуживание, иначе False
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Garage.bool_fix">
+<span class="sig-name descname"><span class="pre">bool_fix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Garage.bool_fix" title="Link to this definition">¶</a></dt>
+<dd><p>Проверяет, нуждается ли ангар в ремонте (наличие ВС в ангаре, требующих ремонта).
+:return: True, если требуется ремонт, иначе False
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Garage.get_absolute_url">
+<span class="sig-name descname"><span class="pre">get_absolute_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Garage.get_absolute_url" title="Link to this definition">¶</a></dt>
+<dd><p>Возвращает абсолютный URL для данного ангара.
+:return: Абсолютный URL ангара
+:rtype: str</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Garage.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#mainapp.models.Garage.id" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BigAutoField</span></code></a></p>
+<p>Primary key: ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Garage.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#mainapp.models.Garage.name" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p>
+<p>Название ангара</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Garage.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#mainapp.models.Garage.objects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.models.Unit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mainapp.models.</span></span><span class="sig-name descname"><span class="pre">Unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Unit" title="Link to this definition">¶</a></dt>
+<dd><p>Модель узла или агрегата воздушного судна.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(в Python v3.11)"><em>str</em></a>) – Название агрегата</p></li>
+<li><p><strong>aircraft</strong> (<a class="reference internal" href="#mainapp.models.Aircraft" title="mainapp.models.Aircraft"><em>Aircraft</em></a>) – ВС</p></li>
+<li><p><strong>parttype</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(в Python v3.11)"><em>int</em></a>) – Код запчасти</p></li>
+<li><p><strong>repairdate</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(в Python v3.11)"><em>datetime.date</em></a>) – Дата последнего ремонта</p></li>
+<li><p><strong>controldate</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(в Python v3.11)"><em>datetime.date</em></a>) – Дата последнего обслуживания</p></li>
+<li><p><strong>time_to_fix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(в Python v3.11)"><em>int</em></a>) – Интервал ремонта (дни)</p></li>
+<li><p><strong>time_to_control</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(в Python v3.11)"><em>int</em></a>) – Интервал обслуживания (дни)</p></li>
+<li><p><strong>comment</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(в Python v3.11)"><em>str</em></a>) – Комментарий</p></li>
+<li><p><strong>id</strong> (<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(в Django v4.2)"><em>BigAutoField</em></a>) – Primary key: ID</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Unit.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#mainapp.models.Unit.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Unit.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#mainapp.models.Unit.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.aircraft">
+<span class="sig-name descname"><span class="pre">aircraft</span></span><a class="headerlink" href="#mainapp.models.Unit.aircraft" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.ForeignKey" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForeignKey</span></code></a> to <a class="reference internal" href="#mainapp.models.Aircraft" title="mainapp.models.Aircraft"><code class="xref py py-class docutils literal notranslate"><span class="pre">Aircraft</span></code></a></p>
+<p>ВС (related name: <a class="reference internal" href="#mainapp.models.Aircraft.unt" title="mainapp.models.Aircraft.unt"><code class="xref py py-attr docutils literal notranslate"><span class="pre">unt</span></code></a>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.aircraft_id">
+<span class="sig-name descname"><span class="pre">aircraft_id</span></span><a class="headerlink" href="#mainapp.models.Unit.aircraft_id" title="Link to this definition">¶</a></dt>
+<dd><p>Internal field, use <a class="reference internal" href="#mainapp.models.Unit.aircraft" title="mainapp.models.Unit.aircraft"><code class="xref py py-class docutils literal notranslate"><span class="pre">aircraft</span></code></a> instead.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Unit.bool_control">
+<span class="sig-name descname"><span class="pre">bool_control</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Unit.bool_control" title="Link to this definition">¶</a></dt>
+<dd><p>Проверяет, нуждается ли узел или агрегат в обслуживании (просрочено ли обслуживание).
+:return: True, если требуется обслуживание, иначе False
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Unit.bool_fix">
+<span class="sig-name descname"><span class="pre">bool_fix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Unit.bool_fix" title="Link to this definition">¶</a></dt>
+<dd><p>Проверяет, нуждается ли узел или агрегат в ремонте (просрочен ли ремонт).
+:return: True, если требуется ремонт, иначе False
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Unit.calculate_controldate">
+<span class="sig-name descname"><span class="pre">calculate_controldate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Unit.calculate_controldate" title="Link to this definition">¶</a></dt>
+<dd><p>Рассчитывает дату следующего обслуживания.
+:return: Дата следующего обслуживания
+:rtype: datetime.date</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Unit.calculate_fixdate">
+<span class="sig-name descname"><span class="pre">calculate_fixdate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Unit.calculate_fixdate" title="Link to this definition">¶</a></dt>
+<dd><p>Рассчитывает дату следующего ремонта.
+:return: Дата следующего ремонта
+:rtype: datetime.date</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.comment">
+<span class="sig-name descname"><span class="pre">comment</span></span><a class="headerlink" href="#mainapp.models.Unit.comment" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p>
+<p>Комментарий</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.controldate">
+<span class="sig-name descname"><span class="pre">controldate</span></span><a class="headerlink" href="#mainapp.models.Unit.controldate" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.DateField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DateField</span></code></a></p>
+<p>Дата последнего обслуживания</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Unit.get_absolute_url">
+<span class="sig-name descname"><span class="pre">get_absolute_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Unit.get_absolute_url" title="Link to this definition">¶</a></dt>
+<dd><p>Возвращает абсолютный URL для данного узла или агрегата.
+:return: Абсолютный URL узла или агрегата
+:rtype: str</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Unit.get_next_by_controldate">
+<span class="sig-name descname"><span class="pre">get_next_by_controldate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.DateField:</span> <span class="pre">controldate&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Unit.get_next_by_controldate" title="Link to this definition">¶</a></dt>
+<dd><p>Finds next instance based on <a class="reference internal" href="#mainapp.models.Unit.controldate" title="mainapp.models.Unit.controldate"><code class="xref py py-attr docutils literal notranslate"><span class="pre">controldate</span></code></a>. See <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/instances/#django.db.models.Model.get_next_by_FOO" title="(в Django v4.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_next_by_FOO()</span></code></a> for more information.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Unit.get_next_by_repairdate">
+<span class="sig-name descname"><span class="pre">get_next_by_repairdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.DateField:</span> <span class="pre">repairdate&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Unit.get_next_by_repairdate" title="Link to this definition">¶</a></dt>
+<dd><p>Finds next instance based on <a class="reference internal" href="#mainapp.models.Unit.repairdate" title="mainapp.models.Unit.repairdate"><code class="xref py py-attr docutils literal notranslate"><span class="pre">repairdate</span></code></a>. See <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/instances/#django.db.models.Model.get_next_by_FOO" title="(в Django v4.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_next_by_FOO()</span></code></a> for more information.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Unit.get_previous_by_controldate">
+<span class="sig-name descname"><span class="pre">get_previous_by_controldate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.DateField:</span> <span class="pre">controldate&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Unit.get_previous_by_controldate" title="Link to this definition">¶</a></dt>
+<dd><p>Finds previous instance based on <a class="reference internal" href="#mainapp.models.Unit.controldate" title="mainapp.models.Unit.controldate"><code class="xref py py-attr docutils literal notranslate"><span class="pre">controldate</span></code></a>. See <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/instances/#django.db.models.Model.get_previous_by_FOO" title="(в Django v4.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_previous_by_FOO()</span></code></a> for more information.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Unit.get_previous_by_repairdate">
+<span class="sig-name descname"><span class="pre">get_previous_by_repairdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.DateField:</span> <span class="pre">repairdate&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Unit.get_previous_by_repairdate" title="Link to this definition">¶</a></dt>
+<dd><p>Finds previous instance based on <a class="reference internal" href="#mainapp.models.Unit.repairdate" title="mainapp.models.Unit.repairdate"><code class="xref py py-attr docutils literal notranslate"><span class="pre">repairdate</span></code></a>. See <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/instances/#django.db.models.Model.get_previous_by_FOO" title="(в Django v4.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_previous_by_FOO()</span></code></a> for more information.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#mainapp.models.Unit.id" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.BigAutoField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BigAutoField</span></code></a></p>
+<p>Primary key: ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#mainapp.models.Unit.name" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.CharField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharField</span></code></a></p>
+<p>Название агрегата</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#mainapp.models.Unit.objects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.parttype">
+<span class="sig-name descname"><span class="pre">parttype</span></span><a class="headerlink" href="#mainapp.models.Unit.parttype" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.IntegerField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerField</span></code></a></p>
+<p>Код запчасти</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.repairdate">
+<span class="sig-name descname"><span class="pre">repairdate</span></span><a class="headerlink" href="#mainapp.models.Unit.repairdate" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.DateField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DateField</span></code></a></p>
+<p>Дата последнего ремонта</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.time_to_control">
+<span class="sig-name descname"><span class="pre">time_to_control</span></span><a class="headerlink" href="#mainapp.models.Unit.time_to_control" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.IntegerField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerField</span></code></a></p>
+<p>Интервал обслуживания (дни)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.models.Unit.time_to_fix">
+<span class="sig-name descname"><span class="pre">time_to_fix</span></span><a class="headerlink" href="#mainapp.models.Unit.time_to_fix" title="Link to this definition">¶</a></dt>
+<dd><p>Type: <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/models/fields/#django.db.models.IntegerField" title="(в Django v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntegerField</span></code></a></p>
+<p>Интервал ремонта (дни)</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">AirControl</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, DanilMikhaylov.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/1-models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
